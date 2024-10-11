@@ -17,12 +17,14 @@ mongoose.connect(mongoURI)
 });
 
 var app = express();
-
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
+
+app.get("/", (req, res) => {
+  res.send("API is UP");
 });
+
+
+
