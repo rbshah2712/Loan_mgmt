@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 const loanSchema = mongoose.Schema({
-    loanName : String,
-    loanType : String,
-    loanAmount : Number,
-    loanIssueDate : Date,
-    loanStatus: String
+    loanName : { type: String, required:true },
+    loanType : { type: String, required:true },
+    loanAmount : { type: String, required:true },
+    loanIssueDate : { type: Date, required:true },
+    loanStatus: { type: String, required:true },
 });
 
 const loanModel = mongoose.model('Loans',loanSchema);
