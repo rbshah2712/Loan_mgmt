@@ -23,14 +23,15 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "../../assets/css/vertical-light-layout/style.css",
-              "src/styles.css"
+             "src/styles.css"
             ],
-            "scripts": [
-                "node_modules/jquery/dist/jquery.min.js",
-                "node_modules/bootstrap/dist/js/bootstrap.min.js"
-            ]
+            "scripts": [ 
+              "src/assets/js/main.js",
+              "src/assets/vendor/js/bootstrap.js",
+              "src/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js",
+              "src/assets/vendor/js/menu.js",
+              "src/assets/vendor/libs/apex-charts/apexcharts.js"
+          ]
           },
           "configurations": {
             "production": {
