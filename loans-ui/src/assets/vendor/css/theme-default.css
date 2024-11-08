@@ -669,7 +669,7 @@ a:hover {
 }
 
 .layout-navbar {
-  background-color: rgba(255, 255, 255, 0.88) !important;
+  background-color: rgba(1, 1, 121, 1) !important;
   backdrop-filter: saturate(200%) blur(6px);
 }
 
@@ -832,4 +832,10 @@ html:not(.layout-menu-collapsed) .bg-menu-theme .menu-inner .menu-item .menu-lin
 }
 .bg-footer-theme hr {
   border-color: rgba(105, 108, 255, 0.075);
+}
+
+h2{
+    color: white;
+    margin: 3px 5px 5px 5px;
+    align-content: center;
 }

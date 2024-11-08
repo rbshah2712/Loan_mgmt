@@ -22431,7 +22431,7 @@ html:not(.layout-menu-fixed) .menu-inner-shadow {
   box-shadow: none;
 }
 .layout-wrapper .layout-navbar .dropdown-menu[data-bs-popper] {
-  top: 144%;
+  top: 132%;
 }
 .layout-navbar .navbar-dropdown .dropdown-menu {
   min-width: 22rem;
