@@ -8,8 +8,7 @@ const customerSchema = mongoose.Schema({
     homeAddress: { type: String, required:true },
     workAddress:{ type: String, required:true },
     isactive: { type: Boolean, default:true },
-},
-{ collection: 'customers', strict: false });
+});
 
 const customerModel = mongoose.model('Customers',customerSchema);
 

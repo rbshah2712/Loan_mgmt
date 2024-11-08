@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const customerModel = require('../models/customers.model');
+const settingsModel = require('../models/settings.model');
 router.get("/",function(req,res,next) {
     res.send('response with a resources');
 });

@@ -1,11 +1,22 @@
-<html
-  lang="en"
+<!doctype html>
+<html lang="en"
   class="light-style layout-menu-fixed layout-compact"
   dir="ltr"
   data-theme="theme-default"
-  data-assets-path="../assets/"
+  data-assets-path="/src/assets/"
   data-template="vertical-menu-template-free"
   data-style="light">
+<head>
+  <meta charset="utf-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+  <title>Demo : Cards basic - UI elements | sneat - Bootstrap Dashboard PRO</title>
+
+  <meta name="description" content="" />
+
+</head>
   <body>
 <div class="layout-wrapper layout-content-navbar">
   <div class="layout-container">
@@ -27,7 +38,7 @@
         <!-- Content -->
 
         <div class="container-xxl flex-grow-1 container-p-y">
-          <app-dashboard></app-dashboard>
+          <router-outlet></router-outlet>
         </div>
         <!-- / Content -->
 

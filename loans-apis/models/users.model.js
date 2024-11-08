@@ -9,9 +9,8 @@ const userSchema = mongoose.Schema({
     role: { type: String, required:true },
     designation: { type: String},
     isactive: { type: Boolean, default:true },
-},
-{ collection: 'users', strict: false });
+});
 
-const userModel = mongoose.model('Users',userSchema);
+const usersModel = mongoose.model('Users',userSchema);
 
-module.exports = userModel;
+module.exports = usersModel;

@@ -3,8 +3,14 @@ var express = require('express');
 var mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const userRoutes = require("./routes/users");
-
+const indexRoutes = require("./routes/index");
+const customersRoutes = require("./routes/customers");
+const loansRoutes = require("./routes/loans");
+const paymentsRoutes = require("./routes/payments");
+const invoicesRoutes = require("./routes/invoices");
+const settingsRoutes = require("./routes/settings");
+const auditRoutes = require("./routes/audits");
+const usersRoutes = require("./routes/users");
 
 //Connect database with mongoose
 const port = process.env.PORT || 3000;
@@ -37,8 +43,6 @@ app.use((req, res, next) => {
 app.get("/", (req, res) => {
   res.send("API is UP");
 });
-
-app.use("/api/user",userRoutes);
 
 module.exports = app;
 

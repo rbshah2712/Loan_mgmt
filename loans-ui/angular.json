@@ -23,13 +23,20 @@
               "src/assets"
             ],
             "styles": [
+             "src/assets/vendor/css/core.css",
+             "src/assets/vendor/css/theme-default.css",
+             "src/assets/css/demo.css",
+             "src/assets/vendor/fonts/boxicons.css",
              "src/styles.css"
             ],
             "scripts": [ 
+              "src/assets/vendor/js/helpers.js",
+              "src/assets/js/config.js",
               "src/assets/js/main.js",
               "src/assets/vendor/js/bootstrap.js",
               "src/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js",
               "src/assets/vendor/js/menu.js",
+              "src/assets/js/dashboards-analytics.js",              
               "src/assets/vendor/libs/apex-charts/apexcharts.js"
           ]
           },
