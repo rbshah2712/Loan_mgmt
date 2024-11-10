@@ -2,6 +2,7 @@ var createError = require('http-errors');
 var express = require('express');
 var mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cookie = require('cookie-parser');
 const cors = require('cors');
 const indexRoutes = require("./routes/index");
 const customersRoutes = require("./routes/customers");
@@ -14,7 +15,7 @@ const usersRoutes = require("./routes/users");
 
 //Connect database with mongoose
 const port = process.env.PORT || 3000;
-const mongoURI = 'mongodb+srv://rsanghvi2712:ueVpNig7Z78tCNfH@cluster0.owsw8yh.mongodb.net/Loanmanager';
+const mongoURI = 'mongodb://localhost/LoanManager';
 mongoose.connect(mongoURI)
   .then(() => {
     console.log("connected to mongodb");
@@ -27,6 +28,9 @@ var app = express();
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use('/',indexRoutes);
+app.use('/users',usersRoutes);
+app.use('/customers',customersRoutes);
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin","*");

@@ -839,3 +839,7 @@ h2{
     margin: 3px 5px 5px 5px;
     align-content: center;
 }
+a.menu-link.router-link-active {
+  color: #696cff;
+  background-color: rgba(105, 108, 255, 0.16) !important;
+}
