@@ -61,39 +61,79 @@ router.post("/add",function(req,res,next) {
 
 
 /*Update an existing Customers*/
-router.put("/update", async function(req,res,next) {
-   
-    const customerId = req.params.customerId;
+router.put("/update", function(req,res,next) {
+    try {
+    const customerId = req.query.customerId;
     let customerObj =  {
-        firstName : 'Tina',
-        lastName : 'Shah',
-        emailAddress : 'tinashah@gmail.com',
-        phoneNumber : '4694345443',
-        dob:'2021-06-18',
-        homeAddress:'3659 cedar bridge walk,suwanee,GA',
-        workAddress:'56955 cedar bridge walk,suwanee,GA',
+        firstName : 'Sonal',
+        lastName : 'Sanghvi',
+        emailAddress : 'sonalsanghvi@gmail.com',
+        phoneNumber : '4694568543',
+        dob:'2022-12-18',
+        homeAddress:'6586 cedar bridge walk,suwanee,GA',
+        workAddress:'6969 cedar bridge walk,suwanee,GA',
         isactive: true
     };
-    const updatedResult = await customerModel.findByIdAndUpdate(customerId,customerObj)
-    .then(updatedResult => {
-        console.log('inside');
-        console.log(updatedResult);
-        if(updatedResult){
-        res.status(200).json({message: "customer fetched successfully!",CustomerDetails:updatedResult});
-        }else{
-        res.status(404).json({message: "customer Not Found!"}); 
-    }
-  })
-  .catch(error => {
-    res.status(500).json({
-    message:"Fetching customer failed!"
-    });
-});
+   
+         customerModel.findByIdAndUpdate({_id:customerId},{$set:customerObj}, { new: true })
+        .then((result) => {
+            if (result) {
+                res.status(200).json({ message: "customer updated successfully!" });
+              } else {
+                res.status(401).json({ message: "Record not found or duplicate record" });
+              }
+            })
+            .catch(error => {
+              res.status(500).json({
+                message:"Couldn't update customer!"
+              })
+            })
+      } catch (error) {
+        res.status(401).json({ message: 'Customer Not found!!'});
+      }
 });
 
 /*Delete an existing Customers*/
 router.delete("/delete",function(req,res,next) {
-    res.send('response with a resources');
+    try {
+         const customerId = req.query.customerId;
+         customerModel.findByIdAndDelete(customerId)
+         .then((result) => {
+            if (result) {
+                res.status(200).json({ message: "customer deleted successfully!" });
+              } else {
+                res.status(401).json({ message: "Record not found or duplicate record" });
+              }
+            })
+            .catch(error => {
+              res.status(500).json({
+                message:"Couldn't delete customer!"
+              })
+            })
+      } catch (error) {
+        res.status(401).json({ message: 'Customer Not found!!'});
+      }
+});
+
+/*Delete Multiple existing Customers*/
+router.delete("/delete-multiple",function(req,res,next) {
+    try {
+         customerModel.deleteMany({'firstName':'Tina'})
+         .then((result) => {
+            if (result) {
+                res.status(200).json({ message: "customer deleted successfully!" });
+              } else {
+                res.status(401).json({ message: "Record not found or duplicate record" });
+              }
+            })
+            .catch(error => {
+              res.status(500).json({
+                message:"Couldn't delete customer!"
+              })
+            })
+      } catch (error) {
+        res.status(401).json({ message: 'Customer Not found!!'});
+      }
 });
 
 /*Search an existing Customers*/
