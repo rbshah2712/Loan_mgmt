@@ -5,6 +5,7 @@ import { RegisterComponent } from './auth/register/register.component';
 import { ForgotComponent } from './auth/forgot/forgot.component';
 import { LogoutComponent } from './auth/logout/logout.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = 
 [
@@ -13,6 +14,7 @@ const routes: Routes =
   {path: 'forgot', component:ForgotComponent},
   {path: 'logout', component:LogoutComponent},
   {path: 'dashboard', component:DashboardComponent},
+  {path: 'page-not-found', component:PageNotFoundComponent},
   {path: 'loan-types', loadChildren: () => import('./loan-types/loan-types.module').then(m => m.LoanTypesModule) },
   { path: 'customers', loadChildren: () => import('./customers/customers.module').then(m => m.CustomersModule) }, 
   { path: 'payments', loadChildren: () => import('./payments/payments.module').then(m => m.PaymentsModule) }, 
@@ -21,7 +23,8 @@ const routes: Routes =
   { path: 'settings', loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule) },
   { path: 'loan-types', loadChildren: () => import('./loan-types/loan-types.module').then(m => m.LoanTypesModule) },
   { path: 'reports', loadChildren: () => import('./reports/reports.module').then(m => m.ReportsModule) },
-  { path: 'activity', loadChildren: () => import('./activity-audit/activity-audit.module').then(m => m.ActivityAuditModule) }
+  { path: 'activity', loadChildren: () => import('./activity-audit/activity-audit.module').then(m => m.ActivityAuditModule) } 
+
 ];
 
 @NgModule({

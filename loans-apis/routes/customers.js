@@ -40,13 +40,13 @@ router.get("/view",async function(req,res,next) {
 router.post("/add",function(req,res,next) {
 
     let customerObj =  new customerModel({
-        firstName : 'Veer',
-        lastName : 'Shah',
-        emailAddress : 'veershah@gmail.com',
-        phoneNumber : '4694347443',
-        dob:'2021-05-18',
-        homeAddress:'4245 cedar bridge walk,suwanee,GA',
-        workAddress:'4245 cedar bridge walk,suwanee,GA',
+        firstName : req.body.firstName,
+        lastName : req.body.lastName,
+        emailAddress : req.body.emailAddress,
+        phoneNumber : req.body.phoneNumber,
+        dob:req.body.dob,
+        homeAddress:req.body.homeAddress,
+        workAddress:req.body.workAddress,
         isactive: true
     });
     customerObj.save()
@@ -63,18 +63,17 @@ router.post("/add",function(req,res,next) {
 /*Update an existing Customers*/
 router.put("/update", function(req,res,next) {
     try {
-    const customerId = req.query.customerId;
+    const customerId = req.body.customerId;
     let customerObj =  {
-        firstName : 'Sonal',
-        lastName : 'Sanghvi',
-        emailAddress : 'sonalsanghvi@gmail.com',
-        phoneNumber : '4694568543',
-        dob:'2022-12-18',
-        homeAddress:'6586 cedar bridge walk,suwanee,GA',
-        workAddress:'6969 cedar bridge walk,suwanee,GA',
-        isactive: true
+        firstName : req.body.firstName,
+        lastName : req.body.lastName,
+        emailAddress : req.body.emailAddress,
+        phoneNumber : req.body.phoneNumber,
+        dob:req.body.dob,
+        homeAddress:req.body.homeAddress,
+        workAddress:req.body.workAddress,
+        isactive: req.body.isactive
     };
-   
          customerModel.findByIdAndUpdate({_id:customerId},{$set:customerObj}, { new: true })
         .then((result) => {
             if (result) {
