@@ -50,7 +50,9 @@ router.post("/add",function(req,res,next) {
         isactive: req.body.isactive,
     });
     customerObj.save()
+    
     .then(() => {
+      
         res.status(201).json({ message: 'Customer saved successfully!',customerDetails: customerObj });
       })
       .catch((error) => {

@@ -1,53 +1,68 @@
 <div class="card mb-6">
     <h5 class="card-header">Add Customer</h5>
     <div class="card-body">
-      <form [formGroup]="form" (submit)="AddCustomer()">
+      <form [formGroup]="Customerform" (ngSubmit)="AddCustomer()">
       <div class="mb-4 row">
-        <label for="html5-text-input" class="col-md-2 col-form-label">FirtName</label>
+        <label for="firstName" class="col-md-2 col-form-label">FirtName</label>
         <div class="col-md-10">
-          <input class="form-control" formControlName="firstName"  type="text" value="" />
+          <input class="form-control" formControlName="firstName"  type="text"/>
+          <div *ngIf="Customerform.controls['firstName']?.touched && Customerform.controls['firstName']?.invalid">
+          <div *ngIf="Customerform.controls['firstName']?.errors?.['required']" class="text-danger"> 
+            Please enter firstname. 
+          </div>
+          <div *ngIf="Customerform.controls['firstName']?.errors?.['minLength']" class="text-danger"> 
+            Please enter atleast 3 characters. 
+          </div>
+        </div>
         </div>
       </div>
       <div class="mb-4 row">
         <label for="html5-search-input" class="col-md-2 col-form-label">LastName</label>
         <div class="col-md-10">
           <input class="form-control" formControlName="lastName"  type="text" value="" />
+          <div class="invalid-feedback"> Please enter your name. </div>
         </div>
       </div>
       <div class="mb-4 row">
         <label for="html5-email-input" class="col-md-2 col-form-label">Email</label>
         <div class="col-md-10">
           <input class="form-control" formControlName="emailAddress"  type="email" value="" />
+          <div class="invalid-feedback"> Please enter your name. </div>
         </div>
       </div>
       <div class="mb-4 row">
         <label for="html5-tel-input" class="col-md-2 col-form-label">Phone Number</label>
         <div class="col-md-10">
           <input class="form-control" formControlName="phoneNumber"  type="tel" value="" />
+          <div class="invalid-feedback"> Please enter your name. </div>
         </div>
       </div>
       <div class="mb-4 row">
         <label for="html5-date-input" class="col-md-2 col-form-label">Date of Birth</label>
         <div class="col-md-10">
           <input class="form-control" formControlName="dob"  type="date" value=""  />
+          <div class="invalid-feedback"> Please enter your name. </div>
         </div>
       </div>
       <div class="mb-4 row">
         <label for="html5-password-input" class="col-md-2 col-form-label">Home Address</label>
         <div class="col-md-10">
             <textarea class="form-control" formControlName="homeAddress"  rows="2"></textarea>
+            <div class="invalid-feedback"> Please enter your name. </div>
         </div>
       </div>
       <div class="mb-4 row">
         <label for="html5-number-input" class="col-md-2 col-form-label">Work Address</label>
         <div class="col-md-10">
             <textarea class="form-control" formControlName="workAddress" rows="2"></textarea>
+            <div class="invalid-feedback"> Please enter your name. </div>
         </div>
       </div>
       <div class="mb-4 row">
         <label for="html5-number-input" class="col-md-2 col-form-label">Active?</label>
         <div class="col-md-10">
             <input type="checkbox" class="form-check-input" formControlName="isactive" rows="2" checked/>
+            <div class="invalid-feedback"> Please enter your name. </div>
         </div>
       </div>
       <div class="mb-4 row">
