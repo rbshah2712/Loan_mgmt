@@ -20,9 +20,9 @@ router.get("/list",async function(req,res,next) {
 
 /*GET Specific Customer*/
 router.get("/view",async function(req,res,next) {
-    const userId = req.query.userId;
-        let result = await customerModel.findById(userId)
-        .then(res => {
+    const customerId = req.query.customerId;
+        let result = await customerModel.findById(customerId)
+        .then((result) => {
             if(result){
             res.status(200).json({message: "customer fetched successfully!",CustomerDetails:result});
             }else{
@@ -47,7 +47,7 @@ router.post("/add",function(req,res,next) {
         dob:req.body.dob,
         homeAddress:req.body.homeAddress,
         workAddress:req.body.workAddress,
-        isactive: true
+        isactive: req.body.isactive,
     });
     customerObj.save()
     .then(() => {
