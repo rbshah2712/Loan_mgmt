@@ -38,7 +38,7 @@ router.get("/view",async function(req,res,next) {
     
 /*Create New Customers*/
 router.post("/add",function(req,res,next) {
-
+  try{
     let customerObj =  new customerModel({
         firstName : req.body.firstName,
         lastName : req.body.lastName,
@@ -51,15 +51,28 @@ router.post("/add",function(req,res,next) {
     });
     customerObj.save()
     
-    .then(() => {
-      
-        res.status(201).json({ message: 'Customer saved successfully!',customerDetails: customerObj });
+    .then((result) => {
+      if (result) {
+        console.log(result)
+        res.status(200).json({ message: 'Customer saved successfully!',customerDetails: customerObj });
+      } else {
+        res.status(401).json({ message: "Record not found or duplicate record" });
+      }
       })
       .catch((error) => {
-        res.status(500).json({ message: 'Unable to add customer' });
+        if (error.code === 11000) {
+          // Handle duplicate key error (code 11000)
+          res.status(409).json({ message: 'EmailAddress already exists' });
+      } else {
+         res.status(500).json(error);
+        }
       });
-});
+  }catch(e){
+        // Handle duplicate key error (code 11000)
+        res.status(500).json(e);
 
+  }
+});
 
 
 /*Update an existing Customers*/

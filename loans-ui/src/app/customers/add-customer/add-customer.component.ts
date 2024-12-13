@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CustomerService } from 'src/app/services/customer.service';
-import { formatDate } from '@angular/common';
 import { Customer } from 'src/app/models/consumer.model';
+import { ToastContainerDirective, ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-customer',
@@ -13,8 +14,10 @@ export class AddCustomerComponent implements OnInit {
 
   Customerform!:FormGroup;
   customer!: Customer;
+  @ViewChild(ToastContainerDirective, { static: true })
+  toastContainer: ToastContainerDirective | undefined;
 
-  constructor(private customerService:CustomerService) { }
+  constructor(private customerService:CustomerService, private toasterService: ToastrService, private router:Router) { }
 
   ngOnInit() {
 
@@ -29,7 +32,7 @@ export class AddCustomerComponent implements OnInit {
       isactive : new FormControl(null ,{validators: [Validators.required]}),
       
     });
-   
+
   }
 
 
@@ -50,12 +53,15 @@ export class AddCustomerComponent implements OnInit {
       this.customerService.addCustomer(newCustomer).subscribe({
         next: (data) => 
           {
+            
             this.customer = data;
+            this.resetForm();
           },
           error: (e) => 
           {
-            console.log('Error while adding the customer data');
-          }     
+            this.showError(e);
+          },
+          complete: () => console.info('complete')      
         }); 
       
     }
@@ -63,6 +69,18 @@ export class AddCustomerComponent implements OnInit {
 
   resetForm(){
     this.Customerform.reset();
+    this.showSuccess('Customer Added Successfully');
+    this.router.navigate(['/customers'])
+  }
+
+  showSuccess(message: string | undefined) {
+    this.toasterService.success(message);
+  }
+
+  showError(error: string | undefined) {
+    this.toasterService.error(error,'', {
+      timeOut: 3000,
+    });
   }
 
 }
